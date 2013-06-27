@@ -12,7 +12,7 @@ exports.validate = function (filename, callback) {
   console.log("fs.existsSync")
   console.log(fs.existsSync)
 
-  if(!path.existsSync(filename)){
+  if(!path.existsSyncx(filename)){
     return callback("File " + filename + " does not exist.")
   }
 
