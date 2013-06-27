@@ -2,6 +2,7 @@ var jsYaml = require("js-yaml")
 var fs = require("fs")
 var path = require("path")
 var JSV = require("JSV").JSV
+var underscore = require("underscore")
 
 
 var werckerBoxSchema = JSON.parse(fs.readFileSync(path.join(__dirname, 'wercker-box-schema.json')).toString())
@@ -23,9 +24,13 @@ exports.validate = function (filename, callback) {
   var env = JSV.createEnvironment()
   var report = env.validate(yaml, werckerBoxSchema)
 
-  if(report.errors.length === 0){
-    return callback(null)
+  if(report.errors.length !== 0){
+    var errorMessage = "";
+    underscore.each(report.errors, function (error) {
+      errorMessage += error.message + ": " + error.schemaUri + "\n";
+    });
+    return callback(errorMessage);
   }
 
-  return callback(report.errors)
+  return callback(null);
 }
