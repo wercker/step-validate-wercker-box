@@ -8,7 +8,7 @@ var werckerBoxSchema = JSON.parse(fs.readFileSync(path.join(__dirname, 'wercker-
 
 exports.validate = function (filename, callback) {
 
-  if(!fs.existsSync(filename)){
+  if(!path.existsSync(filename)){
     return callback("File " + filename + " does not exist.")
   }
 
