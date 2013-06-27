@@ -4,4 +4,6 @@ build:
     - install-packages:
         packages: npm
     - npm-install
+    - script:
+        code: npm install esprima
     - npm-test
