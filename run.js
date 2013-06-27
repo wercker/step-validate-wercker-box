@@ -10,7 +10,7 @@ console.log("Validating " + process.argv[2])
 
 validator.validate(process.argv[2], function (error) {
   if(error){
-    console.log(JSON.stringify(error))
+    console.log(error)
     process.exit(1)
   }
   process.exit(0)

@@ -18,7 +18,7 @@ exports.validate = function (filename, callback) {
     yaml = jsYaml.load(yamlContents);
   }
   catch(error){
-    return callback(error)
+    return callback(JSON.stringify(error))
   }
 
   var env = JSV.createEnvironment()
@@ -27,7 +27,8 @@ exports.validate = function (filename, callback) {
   if(report.errors.length !== 0){
     var errorMessage = "";
     underscore.each(report.errors, function (error) {
-      errorMessage += error.message + ": " + error.schemaUri + "\n";
+      var elementName = error.schemaUri.replace("http://jsonschema.net/", "").replace("#", "")
+      errorMessage += error.message + ": " + elementName + "\n";
     });
     return callback(errorMessage);
   }
