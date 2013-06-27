@@ -7,6 +7,10 @@ var JSV = require("JSV").JSV
 var werckerBoxSchema = JSON.parse(fs.readFileSync(path.join(__dirname, 'wercker-box-schema.json')).toString())
 
 exports.validate = function (filename, callback) {
+  console.log("path.existsSync")
+  console.log(path.existsSync)
+  console.log("fs.existsSync")
+  console.log(fs.existsSync)
 
   if(!path.existsSync(filename)){
     return callback("File " + filename + " does not exist.")
