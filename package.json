@@ -13,6 +13,6 @@
     "jasmine-node": "1.6"
   },
   "scripts" : {
-    "test" : "jasmine-node --coffee spec"
+    "test" : "jasmine-node spec"
   }
 }
