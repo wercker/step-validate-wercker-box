@@ -1,0 +1,6 @@
+name: validate-wercker-box
+version: 0.1.0
+summary: Validates the wercker-box.yml needed when creating wercker boxes
+package-exclude:
+  - wercker.yml
+  - spec
